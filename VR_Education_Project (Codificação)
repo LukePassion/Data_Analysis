@@ -1,0 +1,35 @@
+Codificação para os resultados de análise de Perfil dos usuários de VR em ambientes de estudo
+
+#1.Perfil de usuários de VR
+#Selecionar as colunas desejadas e apresentar somente os genêros "Male" e "Female"
+df_filtered = df.select("Student_ID", "Age", "Gender", "Field_of_Study").filter((df["Gender"] == "Male") | (df["Gender"] == "Female"))
+#Exibir o resultado
+df_filtered.display()
+
+from pyspark.sql.functions import count, col, min, max
+#1. Contagem de Field_of_Study para obtenção do mais e menos frequente
+field_count = df_filtered.groupBy("Field_of_Study").count()
+field_count.display()
+
+#Ordenar para encontrar o mais e o menos frequente
+most_frequent_field = field_count.orderBy(col("count").desc()).head(1)[0]
+least_frequent_field = field_count.orderBy(col("count").asc()).head(1)[0]
+
+print("Área de estudo mais frequente: ", most_frequent_field)
+print("Área de estudo menos frequente:", least_frequent_field)
+
+#Contagem dos genêros "Males" e "Females"
+gender_count = df_filtered.groupBy("Gender").count()
+gender_count.display()
+
+#Contagem de "Males" e "Females" por Field_of_Study
+gender_field_count = df_filtered.groupBy("Field_of_Study", "Gender").count()
+gender_field_count.display()
+
+#Determinar qual genêro é mais frequente
+most_frequent_gender = gender_count.orderBy(col("count").desc()).first()
+print("Gênero mais frequente:", most_frequent_gender)
+
+#Idade minima e máxima
+age_stats = df_filtered.agg(min("Age").alias("Minimum Age"), max("Age").alias("Maximum Age"))
+age_stats.display()
