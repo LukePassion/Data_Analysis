@@ -1,0 +1,15 @@
+#Beneficios colaborativos e Criativos
+#Selecionar as tabelas
+df_filtered4 = df.select("Student_ID","Gender", "Impact_on_Creativity", "Collaboration_with_Peers_via_VR", "Interest_in_Continuing_VR_Based_Learning")
+
+#2.Comparação do impacto na Criatividade por gênero
+filtered_df_gender = df_filtered4.filter((df_filtered4["Gender"] == "Male") | (df_filtered4["Gender"] == "Female"))
+creativity_by_gender = filtered_df_gender.groupBy("Gender").agg(avg("Impact_on_Creativity").alias("AVG_Creativity_Impact"))
+creativity_by_gender.display()
+
+#4.Interesse em continuar aprendendo com VR
+from pyspark.sql.functions import count
+interest_in_VR = df_filtered4.groupBy("Interest_in_Continuing_VR_Based_Learning").count()
+total_students = df_filtered4.count()
+interst_percentage = interest_in_VR.withColumn("Percentage", (interest_in_VR["Count"] / total_students) * 100)
+interst_percentage.display()
