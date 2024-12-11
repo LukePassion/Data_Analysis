@@ -1,19 +1,15 @@
 # VR Education: Impacto da Realidade Virtual na Educação
 
-#1.Perfil de usuários de VR
-#Selecionar as colunas desejadas e apresentar somente os genêros "Male" e "Female"
-df_filtered = df.select("Student_ID", "Age", "Gender", "Field_of_Study").filter((df["Gender"] == "Male") | (df["Gender"] == "Female"))
-#Exibir o resultado
-df_filtered.display()
-
 ## Etapa 1: Perfis de Usuários VR
 
 ### Descrição da Etapa
-Nesta etapa, analisamos os perfis demográficos de 20 usuários de VR para entender a diversidade de participantes em termos de idade, gênero e áreas de estudo.
+Nesta etapa, analisamos os perfis demográficos de 20 usuários de VR para entender a diversidade de participantes em termos de idade, 
+gênero e áreas de estudo. Além disso, foi realizada uma análise abrangente para identificar quais áreas de estudo são mais representadas 
+no uso de VR, a distribuição de gêneros e as maiores e menores idades presentes.
 
 ### Resumo dos Resultados
 - **Total de usuários analisados:** 20  
-- Distribuição por gênero: 
+- **Distribuição por gênero:**  
   - Feminino: 10 usuários (50%)  
   - Masculino: 10 usuários (50%)  
 - **Faixa etária:**  
@@ -24,6 +20,45 @@ Nesta etapa, analisamos os perfis demográficos de 20 usuários de VR para enten
   - Negócios: 4 usuários (20%)  
   - Engenharia: 4 usuários (20%)  
   - Ciências: 3 usuários (15%)  
+
+### Análises Detalhadas
+
+#### Áreas de Estudo Mais Representadas
+| Área de Estudo | Contagem |
+|----------------|----------|
+| Educação       | 337      |
+| Ciências       | 383      |
+| Engenharia     | 353      |
+| Artes          | 344      |
+| Medicina       | 354      |
+| Direito        | 357      |
+| Negócios       | 366      |
+
+#### Contagem de Gêneros
+| Gênero  | Contagem |
+|---------|----------|
+| Feminino| 1220     |
+| Masculino| 1274    |
+
+#### Gêneros por Área de Estudo
+| Área de Estudo | Gênero    | Contagem |
+|----------------|-----------|----------|
+| Medicina       | Feminino  | 173      |
+| Educação       | Masculino | 178      |
+| Negócios       | Masculino | 202      |
+| Educação       | Feminino  | 159      |
+| Artes          | Masculino | 168      |
+| Engenharia     | Feminino  | 196      |
+| Ciências       | Masculino | 185      |
+| Ciências       | Feminino  | 198      |
+| Direito        | Masculino | 203      |
+| Negócios       | Feminino  | 164      |
+
+#### Idades
+| Métrica          | Idade |
+|------------------|-------|
+| Idade Mínima     | 12    |
+| Idade Máxima     | 30    |
 
 ### Tabela de Dados
 | Student ID | Idade | Gênero  | Área de Estudo  |
