@@ -1,0 +1,17 @@
+#Suporte institucional e opinião dos professores
+from pyspark.sql.functions import avg, count, col
+
+#Selecionando as tabelas
+df_filtered5 = df.select("Feedback_from_Educators_on_VR", "School_Support_for_VR_in_Curriculum", "Region", "Student_ID", "Engagement_Level")
+
+#Analisando o Feedback dos educadores
+feedback_analysis = df_filtered5.groupBy("Feedback_from_Educators_on_VR").count().orderBy(col("count").desc())
+feedback_analysis.display()
+
+#Analisando o suporte institucional e sua relação com o engajamento
+support_engagement_analysis = df_filtered5.groupBy("School_Support_for_VR_in_Curriculum").agg(avg("Engagement_Level").alias("AVG_Engagement_Level"), count("Student_ID").alias("Total_Students"))
+support_engagement_analysis.display()
+
+#Analisando o suporte por região
+support_by_region = df_filtered5.groupBy("Region").agg(avg("School_Support_for_VR_in_Curriculum").alias("AVG_School_Support"), count("Student_ID").alias("Total_Students"))
+support_by_region.display()
