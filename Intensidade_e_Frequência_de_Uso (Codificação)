@@ -1,0 +1,35 @@
+Codificação para os resultados da análise sobre os dados relativos à intensidade e frequência de uso dos óculos VR na educação
+
+#Intensidde e Frequência de uso
+#Seleção das colunas desejadas
+df_filtered3 = df.select("Student_ID","Hours_of_VR_Usage_Per_Week", "Engagement_Level", "Improvement_in_Learning_Outcomes", "Impact_on_Creativity", "Stress_Level_with_VR_Usage")
+
+#Aprenseta a distribuição de horas de uso de VR
+hour_distribution = df_filtered3.groupBy("Hours_of_VR_Usage_Per_Week").count().orderBy("Hours_of_VR_Usage_Per_Week")
+hour_distribution.display()
+
+#Agrupamento por intensidade de uso
+from pyspark.sql.functions import when, avg
+
+# Classificar alunos em categoria de uso
+hour_filtered = df_filtered3.withColumn(
+    "Usage_Intensity",
+    when(df_filtered3["Hours_of_VR_Usage_Per_Week"] <= 5, "Baixo")
+    .when((df_filtered3["Hours_of_VR_Usage_Per_Week"] > 5) & (df_filtered3["Hours_of_VR_Usage_Per_Week"] <= 15), "Médio")
+    .otherwise("Alto"))
+
+# Usar a quantidade de alunos por intensidade de uso
+usage_intensity_count = hour_filtered.groupBy("Usage_Intensity").count()
+usage_intensity_count.display()
+
+
+#Usar a quantidade de alunos por intensidade de uso
+usage_intensity_count = hour_filtered.groupBy("Usage_Intensity").count()
+usage_intensity_count.display()
+
+#Correlação com impacto entre criatividade e estresse
+from pyspark.sql import functions as F
+stress_analysis = df_filtered.groupBy("Field_of_Study", "Gender").agg(
+    F.avg("Stress_Level_With_VR_Usage").alias("Avg_Stress_Level_With_VR_Usage")
+)
+stress_analysis.display()
