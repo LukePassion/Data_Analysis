@@ -1,0 +1,50 @@
+# VR Education: Impacto da Realidade Virtual na Educação
+
+#1.Perfil de usuários de VR
+#Selecionar as colunas desejadas e apresentar somente os genêros "Male" e "Female"
+df_filtered = df.select("Student_ID", "Age", "Gender", "Field_of_Study").filter((df["Gender"] == "Male") | (df["Gender"] == "Female"))
+#Exibir o resultado
+df_filtered.display()
+
+## Etapa 1: Perfis de Usuários VR
+
+### Descrição da Etapa
+Nesta etapa, analisamos os perfis demográficos de 20 usuários de VR para entender a diversidade de participantes em termos de idade, gênero e áreas de estudo.
+
+### Resumo dos Resultados
+- **Total de usuários analisados:** 20  
+- Distribuição por gênero: 
+  - Feminino: 10 usuários (50%)  
+  - Masculino: 10 usuários (50%)  
+- **Faixa etária:**  
+  - Menores de 20 anos: 10 usuários (50%)  
+  - 20-25 anos: 5 usuários (25%)  
+  - Acima de 25 anos: 5 usuários (25%)  
+- **Principais áreas de estudo:**  
+  - Negócios: 4 usuários (20%)  
+  - Engenharia: 4 usuários (20%)  
+  - Ciências: 3 usuários (15%)  
+
+### Tabela de Dados
+| Student ID | Idade | Gênero  | Área de Estudo  |
+|------------|-------|---------|----------------|
+| STUD0004   | 24    | Feminino| Engenharia      |
+| STUD0006   | 28    | Masculino| Ciências        |
+| STUD0007   | 19    | Masculino| Negócios        |
+| STUD0008   | 19    | Masculino| Educação        |
+| STUD0011   | 26    | Masculino| Negócios        |
+| STUD0013   | 22    | Masculino| Negócios        |
+| STUD0014   | 27    | Feminino | Negócios        |
+| STUD0016   | 18    | Feminino | Direito         |
+| STUD0018   | 18    | Feminino | Negócios        |
+| STUD0019   | 16    | Feminino | Direito         |
+| STUD0020   | 16    | Feminino | Educação        |
+| STUD0022   | 16    | Feminino | Medicina        |
+| STUD0026   | 15    | Masculino| Engenharia      |
+| STUD0027   | 25    | Masculino| Ciências        |
+| STUD0029   | 23    | Feminino | Artes           |
+| STUD0032   | 12    | Feminino | Medicina        |
+| STUD0033   | 22    | Masculino| Artes           |
+| STUD0035   | 15    | Masculino| Engenharia      |
+| STUD0036   | 12    | Masculino| Direito         |
+| STUD0037   | 15    | Masculino| Ciências        |
