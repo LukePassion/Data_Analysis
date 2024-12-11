@@ -1,0 +1,15 @@
+#6.Distribuição Georáfica e Suporte Regional
+from pyspark.sql.functions import col, avg, count
+df_filtered6 = df.select("Region", "Student_ID", "School_Support_for_VR_in_Curriculum", "Perceived_Effectiveness_of_VR", "Impact_on_Creativity")
+
+#Contagem de estudantes por região
+students_by_region = df_filtered6.groupBy("Region").count().orderBy(col("Count").desc())
+students_by_region.display()
+
+#Suporte institucional por região
+support_analysis_by_region = df_filtered6.groupBy("Region").agg(avg("School_Support_for_VR_in_Curriculum").alias("AVG_School_Support"), count("Student_ID").alias("Total_Students"))
+support_analysis_by_region.display()
+
+#Analise da efetividade e impacto criativo por região
+effectiveness_by_region = df_filtered6.groupBy("Region").agg(avg("Perceived_Effectiveness_of_VR").alias("AVG_Perceived_Effectiveness"), avg("Impact_on_Creativity").alias("AVG_Creativity_Impact"))
+effectiveness_by_region.display()
