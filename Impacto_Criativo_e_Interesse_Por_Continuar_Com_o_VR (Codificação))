@@ -1,4 +1,4 @@
-#Beneficios colaborativos e Criativos
+#Impacto e Criativo
 #Selecionar as tabelas
 df_filtered4 = df.select("Student_ID","Gender", "Impact_on_Creativity", "Collaboration_with_Peers_via_VR", "Interest_in_Continuing_VR_Based_Learning")
 
