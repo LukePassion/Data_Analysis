@@ -1,0 +1,16 @@
+#2.Efetividade e engajamento no ensino
+#Selecionar as colunas desejadas 
+df_filtered2 = df.select("Hours_of_VR_Usage_Per_Week", "Engagement_Level", "Improvement_in_Learning_Outcomes", "Perceived_Effectiveness_of_VR", "Feedback_from_Educators_on_VR", "Instructor_VR_Proficiency")
+
+#apresentar a correlação entre as horas de uso do VR por semana e o nível de angajamento
+correlation_usage_engagement = df_filtered2.stat.corr("Hours_of_VR_Usage_Per_Week", "Engagement_Level")
+print("Correlação entre horas de uso de VR por semana e Nível de engakamento:", correlation_usage_engagement)
+correlation_usage_engagemet.display()
+
+# Média de percepção de efetividade do VR por nível de engajamento e melhoria no aprendizado
+perceived_effectiveness_analysis = df_filtered2.groupBy("Engagement_Level", "Improvement_in_Learning_Outcomes").agg(avg("Perceived_Effectiveness_of_VR").alias("Avg_Effectiveness"))
+perceived_effectiveness_analysis.display()
+
+# Média de engajamento por proficiência do instrutor em VR
+instructor_proficiency_analysis = df_filtered2.groupBy("Instructor_VR_Proficiency").agg(avg("Engagement_Level").alias("Avg_Engagement"))
+instructor_proficiency_analysis.display()
