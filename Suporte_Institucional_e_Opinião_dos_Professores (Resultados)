@@ -1,0 +1,21 @@
+Resultados da análise sobre os dados de suporte institucional e opinião dos professores sobre o VR.
+
+Feedback_from_Educators_on_VR	count|
+Positive	                    1739 |
+Neutral	                      1640 |
+Negative	                    1621 |
+------------------------------------
+
+School_Support_for_VR_in_Curriculum	AVG_Engagement_Level	Total_Students|
+No	                                3.0	                  2561          |
+Yes	                                3.0	                  2439          |
+-------------------------------------------------------------------------
+
+Region	        AVG_School_Support	Total_Students|
+Europe	        null	              817           |
+Africa	        null	              840           |
+North America	  null	              828           |
+South America	  null	              868           |
+Oceania	        null	              794           |
+Asia	          null	              853           |
+---------------------------------------------------
